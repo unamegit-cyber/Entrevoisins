@@ -32,13 +32,13 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:28.0.0'
 
     implementation 'com.jakewharton:butterknife:9.0.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0' // Utilisé pour lier les fragments aux vues
 
     implementation 'com.github.bumptech.glide:glide:4.9.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0' // Utilisé pour améliorer le chargement des images
 
     // EVENT BUS
-    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'org.greenrobot:eventbus:3.1.1' // Facilite les échanges entre les éléments de l'app
 
     // UNIT TEST
     testImplementation 'junit:junit:4.12'

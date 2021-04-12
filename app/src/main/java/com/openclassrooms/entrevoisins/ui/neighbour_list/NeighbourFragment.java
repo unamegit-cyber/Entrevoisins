@@ -21,7 +21,6 @@ import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
-
 public class NeighbourFragment extends Fragment {
 
     private NeighbourApiService mApiService;
@@ -52,6 +51,7 @@ public class NeighbourFragment extends Fragment {
         mRecyclerView = (RecyclerView) view;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+
         return view;
     }
 
@@ -90,4 +90,5 @@ public class NeighbourFragment extends Fragment {
         mApiService.deleteNeighbour(event.neighbour);
         initList();
     }
+
 }
