@@ -1,5 +1,7 @@
 package com.openclassrooms.entrevoisins.model;
 
+import android.text.BoringLayout;
+
 import java.util.Objects;
 
 /**
@@ -22,8 +24,14 @@ public class Neighbour {
     /** Phone number */
     private String phoneNumber;
 
+    /** Web url */
+    private String webUrl;
+
     /** About me */
     private String aboutMe;
+
+    /** Favorite */
+    private Boolean favorite;
 
     /**
      * Constructor
@@ -32,13 +40,15 @@ public class Neighbour {
      * @param avatarUrl
      */
     public Neighbour(long id, String name, String avatarUrl, String address,
-                     String phoneNumber, String aboutMe) {
+                     String phoneNumber, String webUrl, String aboutMe, Boolean favorite) {
         this.id = id;
         this.name = name;
         this.avatarUrl = avatarUrl;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        this.webUrl = webUrl;
         this.aboutMe = aboutMe;
+        this.favorite = favorite;
     }
 
     public long getId() {
@@ -81,12 +91,28 @@ public class Neighbour {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getWebUrl() {
+        return webUrl;
+    }
+
+    public void setWebUrl(String webUrl) {
+        this.webUrl = webUrl;
+    }
+
     public String getAboutMe() {
         return aboutMe;
     }
 
     public void setAboutMe(String aboutMe) {
         this.aboutMe = aboutMe;
+    }
+
+    public Boolean getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(Boolean favorite) {
+        this.favorite = favorite;
     }
 
     @Override

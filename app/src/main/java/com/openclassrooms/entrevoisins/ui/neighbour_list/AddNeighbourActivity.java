@@ -35,6 +35,8 @@ public class AddNeighbourActivity extends AppCompatActivity {
     TextInputLayout addressInput;
     @BindView(R.id.aboutMeLyt)
     TextInputLayout aboutMeInput;
+    @BindView(R.id.webUrlLyt)
+    TextInputLayout webUrlInput;
     @BindView(R.id.create)
     MaterialButton addButton;
 
@@ -87,7 +89,9 @@ public class AddNeighbourActivity extends AppCompatActivity {
                 mNeighbourImage,
                 addressInput.getEditText().getText().toString(),
                 phoneInput.getEditText().getText().toString(),
-                aboutMeInput.getEditText().getText().toString()
+                webUrlInput.getEditText().getText().toString(),
+                aboutMeInput.getEditText().getText().toString(),
+                false
         );
         mApiService.createNeighbour(neighbour);
         finish();

@@ -1,24 +1,17 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ImageButton;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
@@ -27,7 +20,6 @@ import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class DetailNeighbourActivity extends AppCompatActivity {
 
@@ -81,10 +73,27 @@ public class DetailNeighbourActivity extends AppCompatActivity {
         mDetailName2.setText(neighbour.getName());
         mDetailAdresse.setText(neighbour.getAddress());
         mDetailTelephone.setText(neighbour.getPhoneNumber());
-        mDetailWeb.setText("www.facebook.fr/" + neighbour.getName().toLowerCase());
+        mDetailWeb.setText(neighbour.getWebUrl());
         mDetailDescription.setText(neighbour.getAboutMe());
 
-        mDetailFavorisButton.setImageResource(R.drawable.ic_baseline_star_yellow_24);
+        mDetailFavorisButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (neighbour.getFavorite()) {
+                    mDetailFavorisButton.setImageResource(R.drawable.ic_baseline_star_black_24);
+                    neighbour.setFavorite(false);
+                } else {
+                    mDetailFavorisButton.setImageResource(R.drawable.ic_baseline_star_yellow_24);
+                    neighbour.setFavorite(true);
+                }
+            }
+        });
+
+        if (neighbour.getFavorite()) {
+            mDetailFavorisButton.setImageResource(R.drawable.ic_baseline_star_yellow_24);
+        } else {
+            mDetailFavorisButton.setImageResource(R.drawable.ic_baseline_star_black_24);
+        }
 
         Glide.with(this)
                 .load(neighbour.getAvatarUrl())
@@ -92,19 +101,6 @@ public class DetailNeighbourActivity extends AppCompatActivity {
                 .into(mDetailAvatar);
 
     }
-
-/*
-    public View onCreateView(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_detail_neighbour, parent, false);
-
-        ImageView mFavorisBtn= (ImageView) findViewById(R.id.item_detail_favoris_button);
-        int color = Color.parseColor("#FFD700");
-        mFavorisBtn.setColorFilter(color);
-
-        return view;
-    }
-*/
 
     @Override
     public boolean onSupportNavigateUp() {
