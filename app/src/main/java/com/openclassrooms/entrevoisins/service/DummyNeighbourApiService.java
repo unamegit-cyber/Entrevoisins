@@ -22,9 +22,11 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
     }
 
     public List<Neighbour> getFavoriteNeighbours() {
-        List favoriteNeighbours = new ArrayList();
+        List<Neighbour> favoriteNeighbours = new ArrayList();
         for (Neighbour neighbour : neighbours) {
-            favoriteNeighbours.add(neighbour);
+            if (neighbour.getFavorite()) {
+                favoriteNeighbours.add(neighbour);
+            }
         }
         return favoriteNeighbours;
     }

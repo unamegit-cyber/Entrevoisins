@@ -26,14 +26,20 @@ public class NeighbourFragment extends Fragment {
     private NeighbourApiService mApiService;
     private List<Neighbour> mNeighbours;
     private RecyclerView mRecyclerView;
-
+    private static final String KEY_FAVORITES="favorites";
+    private boolean mFavorites;
 
     /**
      * Create and return a new instance
      * @return @{@link NeighbourFragment}
      */
-    public static NeighbourFragment newInstance() {
+    public static NeighbourFragment newInstance(boolean favorites) {
         NeighbourFragment fragment = new NeighbourFragment();
+
+        Bundle args = new Bundle();
+        args.putBoolean(KEY_FAVORITES, favorites);
+        fragment.setArguments(args);
+
         return fragment;
     }
 
@@ -51,7 +57,7 @@ public class NeighbourFragment extends Fragment {
         mRecyclerView = (RecyclerView) view;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-
+        this.mFavorites = getArguments().getBoolean(KEY_FAVORITES, false);
         return view;
     }
 
@@ -59,7 +65,11 @@ public class NeighbourFragment extends Fragment {
      * Init the List of neighbours
      */
     private void initList() {
-        mNeighbours = mApiService.getNeighbours();
+        if (mFavorites) {
+            mNeighbours = mApiService.getFavoriteNeighbours();
+        } else {
+            mNeighbours = mApiService.getNeighbours();
+        }
         mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
     }
 

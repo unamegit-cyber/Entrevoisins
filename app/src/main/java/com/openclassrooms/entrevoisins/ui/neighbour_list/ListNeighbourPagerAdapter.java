@@ -4,7 +4,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-
 public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
 
     public ListNeighbourPagerAdapter(FragmentManager fm) {
@@ -18,7 +17,14 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
      */
     @Override
     public Fragment getItem(int position) {
-        return NeighbourFragment.newInstance();
+        switch (position){
+            case 0:
+                return NeighbourFragment.newInstance(false);
+            case 1:
+                return NeighbourFragment.newInstance(true);
+            default:
+                return null;
+        }
     }
 
     /**
@@ -27,6 +33,17 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
      */
     @Override
     public int getCount() {
-        return 1;
+        return 2;
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        if (position == 0) {
+            return "My Neighbour";
+//            return String.format(Resources.getSystem().getString(R.string.Fragment_Neighbour_List));
+        } else {
+            return "Favorites";
+//            return String.format(Resources.getSystem().getString(R.string.Fragment_Neighbour_Favorites_List));
+        }
     }
 }
