@@ -64,9 +64,14 @@ public class DetailNeighbourActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int neighbour_position = Integer.parseInt(intent.getStringExtra("neighbour_position"));
+        boolean isFavorite = Boolean.parseBoolean(intent.getStringExtra("is_favorite"));
 
         mApiService = DI.getNeighbourApiService();
-        mNeighbours = mApiService.getNeighbours();
+        if (isFavorite) {
+            mNeighbours = mApiService.getFavoriteNeighbours();
+        } else {
+            mNeighbours = mApiService.getNeighbours();
+        }
         Neighbour neighbour = mNeighbours.get(neighbour_position);
 
         mDetailName.setText(neighbour.getName());
@@ -107,5 +112,5 @@ public class DetailNeighbourActivity extends AppCompatActivity {
         onBackPressed();
         return true;
     }
-
+    
 }

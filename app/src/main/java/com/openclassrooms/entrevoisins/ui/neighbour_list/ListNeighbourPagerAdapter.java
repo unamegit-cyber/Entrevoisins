@@ -1,13 +1,23 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.openclassrooms.entrevoisins.R;
+
+import java.util.Arrays;
+import java.util.List;
+
 public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
 
-    public ListNeighbourPagerAdapter(FragmentManager fm) {
+    private List<NeighbourFragment> fragments = Arrays.asList(NeighbourListFragment.newInstance(), NeighbourFavorisFragment.newInstance());
+    private Context context;
+
+    public ListNeighbourPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
+        this.context = context;
     }
 
     /**
@@ -17,14 +27,7 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
      */
     @Override
     public Fragment getItem(int position) {
-        switch (position){
-            case 0:
-                return NeighbourFragment.newInstance(false);
-            case 1:
-                return NeighbourFragment.newInstance(true);
-            default:
-                return null;
-        }
+        return fragments.get(position);
     }
 
     /**
@@ -33,17 +36,15 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
      */
     @Override
     public int getCount() {
-        return 2;
+        return fragments.size();
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
         if (position == 0) {
-            return "My Neighbour";
-//            return String.format(Resources.getSystem().getString(R.string.Fragment_Neighbour_List));
+            return context.getResources().getString(R.string.Fragment_Neighbour_List);
         } else {
-            return "Favorites";
-//            return String.format(Resources.getSystem().getString(R.string.Fragment_Neighbour_Favorites_List));
+            return context.getResources().getString(R.string.Fragment_Neighbour_Favorites_List);
         }
     }
 }

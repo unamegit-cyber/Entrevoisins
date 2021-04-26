@@ -27,9 +27,11 @@ import butterknife.ButterKnife;
 public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeighbourRecyclerViewAdapter.ViewHolder> {
 
     private final List<Neighbour> mNeighbours;
+    private final boolean isFavorite;
 
-    public MyNeighbourRecyclerViewAdapter(List<Neighbour> items) {
+    public MyNeighbourRecyclerViewAdapter(List<Neighbour> items, boolean isFavoriteNeighbours) {
         mNeighbours = items;
+        isFavorite = isFavoriteNeighbours;
     }
 
     @Override
@@ -60,6 +62,7 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
             public void onClick(View view) {
                 Intent DetailNeighbourActivity = new Intent(holder.mNeighbourAvatar.getContext(), DetailNeighbourActivity.class);
                 DetailNeighbourActivity.putExtra("neighbour_position", String.valueOf(position));
+                DetailNeighbourActivity.putExtra("is_favorite", String.valueOf(isFavorite));
                 holder.mItemNeighbour.getContext().startActivity(DetailNeighbourActivity);
             }
         });

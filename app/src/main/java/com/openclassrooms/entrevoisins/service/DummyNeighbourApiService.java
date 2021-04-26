@@ -24,7 +24,7 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
     public List<Neighbour> getFavoriteNeighbours() {
         List<Neighbour> favoriteNeighbours = new ArrayList();
         for (Neighbour neighbour : neighbours) {
-            if (neighbour.getFavorite()) {
+            if (neighbour.getFavorite()) { // Mettre isFavorite
                 favoriteNeighbours.add(neighbour);
             }
         }
