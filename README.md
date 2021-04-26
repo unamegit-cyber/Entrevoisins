@@ -28,6 +28,6 @@ To run the project, select "app" configuration and click on "run 'app'" icone or
 ## Test
 ***
 
-Unit test : Select "NeighbourServiceTest" configuration and click on "run 'NeighbourServiceTest'" icone or do "CTRL-10".
+Unit test : Select "NeighbourListTest" configuration and click on "run 'NeighbourListTest'" icone or do "CTRL-10".
 
-Instrumented Test : Select "NeighbourListTest" configuration and click on "run 'NeighbourListTest'" icone or do "CTRL-10".
+Instrumented Test : Select "NeighbourServiceTest" configuration and click on "run 'NeighbourServiceTest'" icone or do "CTRL-10".
