@@ -2,12 +2,17 @@ package com.openclassrooms.entrevoisins.model;
 
 import android.text.BoringLayout;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 /**
  * Model object representing a Neighbour
  */
-public class Neighbour {
+public class Neighbour implements Serializable {
 
     /** Identifier */
     private long id;
@@ -31,7 +36,7 @@ public class Neighbour {
     private String aboutMe;
 
     /** Favorite */
-    private Boolean favorite;
+    private Boolean isFavorite;
 
     /**
      * Constructor
@@ -40,7 +45,7 @@ public class Neighbour {
      * @param avatarUrl
      */
     public Neighbour(long id, String name, String avatarUrl, String address,
-                     String phoneNumber, String webUrl, String aboutMe, Boolean favorite) {
+                     String phoneNumber, String webUrl, String aboutMe, Boolean isFavorite) {
         this.id = id;
         this.name = name;
         this.avatarUrl = avatarUrl;
@@ -48,7 +53,7 @@ public class Neighbour {
         this.phoneNumber = phoneNumber;
         this.webUrl = webUrl;
         this.aboutMe = aboutMe;
-        this.favorite = favorite;
+        this.isFavorite = isFavorite;
     }
 
     public long getId() {
@@ -107,12 +112,12 @@ public class Neighbour {
         this.aboutMe = aboutMe;
     }
 
-    public Boolean getFavorite() {
-        return favorite;
+    public Boolean isFavorite() {
+        return isFavorite;
     }
 
-    public void setFavorite(Boolean favorite) {
-        this.favorite = favorite;
+    public void isFavorite(Boolean isFavorite) {
+        this.isFavorite = isFavorite;
     }
 
     @Override
@@ -127,4 +132,5 @@ public class Neighbour {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }

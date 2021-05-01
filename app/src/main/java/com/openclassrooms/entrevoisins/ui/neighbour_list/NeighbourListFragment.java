@@ -20,11 +20,7 @@ import com.openclassrooms.entrevoisins.R;
 public  class NeighbourListFragment extends NeighbourFragment {
 
     public static NeighbourListFragment newInstance() {
-        NeighbourListFragment fragment = new NeighbourListFragment();
-
-        Bundle args = new Bundle();
-
-        return fragment;
+        return new NeighbourListFragment();
     }
 
     @Override
@@ -44,6 +40,6 @@ public  class NeighbourListFragment extends NeighbourFragment {
     @Override
     protected void initList() {
         mNeighbours = mApiService.getNeighbours();
-        mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours, false));
+        mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
     }
 }

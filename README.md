@@ -31,3 +31,21 @@ To run the project, select "app" configuration and click on "run 'app'" icone or
 Unit test : Select "NeighbourListTest" configuration and click on "run 'NeighbourListTest'" icone or do "CTRL-10".
 
 Instrumented Test : Select "NeighbourServiceTest" configuration and click on "run 'NeighbourServiceTest'" icone or do "CTRL-10".
+
+
+
+
+
+installation 
+ metter la commande shell pour git clone
+ 
+ ajouter un screenshot pour montrer les boutons présentés pour chaque cas
+ 
+ Rajouter les docs des bilbiothèques utilisées (les lister)
+ 
+ Rajouter le resumé du cadrage en entete
+ 
+ 
+ Faire un ppt pour présenter le p3 en soutenance
+ 
+ 

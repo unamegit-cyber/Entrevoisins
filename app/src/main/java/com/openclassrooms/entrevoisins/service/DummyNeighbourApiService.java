@@ -1,5 +1,8 @@
 package com.openclassrooms.entrevoisins.service;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+
 import com.openclassrooms.entrevoisins.model.Neighbour;
 
 import java.util.ArrayList;
@@ -24,11 +27,16 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
     public List<Neighbour> getFavoriteNeighbours() {
         List<Neighbour> favoriteNeighbours = new ArrayList();
         for (Neighbour neighbour : neighbours) {
-            if (neighbour.getFavorite()) { // Mettre isFavorite
+            if (neighbour.isFavorite()) {
                 favoriteNeighbours.add(neighbour);
             }
         }
         return favoriteNeighbours;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public Neighbour getNeighbour(long id) {
+        return neighbours.stream().filter(n -> n.getId() == id).findFirst().orElse(null);
     }
 
     /**
