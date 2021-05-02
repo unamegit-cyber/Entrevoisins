@@ -10,20 +10,27 @@ Add new page which list favorites neighbours.
 3. [Execution](#execution)
 4. [Test](#test)
 
-### Installation
+## Installation
 ***
 
-Download entire project "Entrevoisins" and open it with JetBrains Visual Studio Code at the root directory.
+Download entire project "Entrevoisins" with the following command and open it with JetBrains Visual Studio Code at the root directory.
+
+git clone https://github.com/unamegit-cyber/Entrevoisins.git entrevoisins
 
 ## Compilation
 ***
 
 To build the project, select "app" configuration and click on "Make Project" icone or do "CTRL-9".
 
+![alt text](https://github.com/unamegit-cyber/Entrevoisins/blob/master/blob/makeproject.png)
+
+
 ## Execution
 ***
 
 To run the project, select "app" configuration and click on "run 'app'" icone or do "CTRL-10".
+
+![alt text](https://github.com/unamegit-cyber/Entrevoisins/blob/master/blob/makeproject.png)
 
 ## Test
 ***
@@ -32,14 +39,13 @@ Unit test : Select "NeighbourListTest" configuration and click on "run 'Neighbou
 
 Instrumented Test : Select "NeighbourServiceTest" configuration and click on "run 'NeighbourServiceTest'" icone or do "CTRL-10".
 
+![alt text](https://github.com/unamegit-cyber/Entrevoisins/blob/master/blob/makeproject.png)
 
 
 
 
-installation 
- metter la commande shell pour git clone
+
  
- ajouter un screenshot pour montrer les boutons présentés pour chaque cas
  
  Rajouter les docs des bilbiothèques utilisées (les lister)
  
