@@ -1,11 +1,14 @@
-package com.openclassrooms.entrevoisins.ui.neighbour_list;
+package com.openclassrooms.entrevoisins.ui;
 
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,9 +21,8 @@ import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 
-import java.util.List;
-
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class DetailNeighbourActivity extends AppCompatActivity {
 
@@ -44,60 +46,62 @@ public class DetailNeighbourActivity extends AppCompatActivity {
     private Neighbour mNeighbour;
     private NeighbourApiService mApiService;
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void activeActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+    }
+
+    private void setUiData(Neighbour neighbour) {
+        mDetailName.setText(neighbour.getName());
+        mDetailName2.setText(neighbour.getName());
+        mDetailAdresse.setText(neighbour.getAddress());
+        mDetailTelephone.setText(neighbour.getPhoneNumber());
+        mDetailWeb.setText(neighbour.getWebUrl());
+        mDetailDescription.setText(neighbour.getAboutMe());
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_neighbour);
+        ButterKnife.bind(this);
+        NeighbourApiService mApiService = DI.getNeighbourApiService();
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
-
-        mApiService = DI.getNeighbourApiService();
-
-        mDetailAvatar = (ImageView) findViewById(R.id.item_detail_avatar);
-        mDetailName = (TextView) findViewById(R.id.item_detail_name);
-        mDetailFavorisButton = (ImageButton) findViewById(R.id.item_detail_favoris_button);
-        mDetailName2 = (TextView) findViewById(R.id.item_detail_name2);
-        mDetailAdresse = (TextView) findViewById(R.id.item_detail_adresse);
-        mDetailTelephone = (TextView) findViewById(R.id.item_detail_telephone);
-        mDetailWeb = (TextView) findViewById(R.id.item_detail_web);
-        mDetailDescription = (TextView) findViewById(R.id.item_detail_description);
+        this.activeActionBar();
 
         Intent intent = getIntent();
         mNeighbour = (Neighbour) intent.getSerializableExtra("neighbour");
 
-        mDetailName.setText(mNeighbour.getName());
-        mDetailName2.setText(mNeighbour.getName());
-        mDetailAdresse.setText(mNeighbour.getAddress());
-        mDetailTelephone.setText(mNeighbour.getPhoneNumber());
-        mDetailWeb.setText(mNeighbour.getWebUrl());
-        mDetailDescription.setText(mNeighbour.getAboutMe());
+        this.setUiData(mNeighbour);
+
         mDetailFavorisButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (mNeighbour.isFavorite()) {
                     mDetailFavorisButton.setImageResource(R.drawable.ic_baseline_star_black_24);
-                    mApiService.getNeighbour(mNeighbour.getId()).isFavorite(false);
                 } else {
                     mDetailFavorisButton.setImageResource(R.drawable.ic_baseline_star_yellow_24);
-                    mApiService.getNeighbour(mNeighbour.getId()).isFavorite(true);
                 }
+                mApiService.toggleFavorite(mNeighbour);
             }
         });
 
-        if (mNeighbour.isFavorite()) {
-            mDetailFavorisButton.setImageResource(R.drawable.ic_baseline_star_yellow_24);
-        } else {
-            mDetailFavorisButton.setImageResource(R.drawable.ic_baseline_star_black_24);
-        }
+        this.showFavorite();
 
         Glide.with(this)
                 .load(mNeighbour.getAvatarUrl())
                 .centerCrop()
                 .into(mDetailAvatar);
 
+    }
+
+    private void showFavorite() {
+        if (mNeighbour.isFavorite()) {
+            mDetailFavorisButton.setImageResource(R.drawable.ic_baseline_star_yellow_24);
+        } else {
+            mDetailFavorisButton.setImageResource(R.drawable.ic_baseline_star_black_24);
+        }
     }
 
     @Override

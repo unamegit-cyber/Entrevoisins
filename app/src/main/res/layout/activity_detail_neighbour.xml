@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorBckGrey"
-    tools:context=".ui.neighbour_list.DetailNeighbourActivity">
+    tools:context=".ui.DetailNeighbourActivity">
 
         <FrameLayout
             android:id="@+id/item_detail_frame1"

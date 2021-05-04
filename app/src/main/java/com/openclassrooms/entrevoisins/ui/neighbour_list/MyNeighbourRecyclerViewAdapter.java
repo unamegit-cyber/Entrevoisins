@@ -1,6 +1,5 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
@@ -40,7 +39,7 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         Neighbour neighbour = mNeighbours.get(position);
         holder.mNeighbourName.setText(neighbour.getName());
         Glide.with(holder.mNeighbourAvatar.getContext())
@@ -58,7 +57,7 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
         holder.mItemNeighbour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent DetailNeighbourActivity = new Intent(holder.mNeighbourAvatar.getContext(), DetailNeighbourActivity.class);
+                Intent DetailNeighbourActivity = new Intent(holder.mNeighbourAvatar.getContext(), com.openclassrooms.entrevoisins.ui.DetailNeighbourActivity.class);
                 DetailNeighbourActivity.putExtra("neighbour", neighbour);
                 holder.mItemNeighbour.getContext().startActivity(DetailNeighbourActivity);
             }

@@ -11,13 +11,13 @@ import java.util.List;
 public interface NeighbourApiService {
 
     /**
-     * Get all my Neighbours
+     * Get all Neighbours
      * @return {@link List}
      */
     List<Neighbour> getNeighbours();
 
     /**
-     * Get all my favorites Neighbours
+     * Get all favorites Neighbours
      * @return {@link List}
      */
     List<Neighbour> getFavoriteNeighbours();
@@ -40,4 +40,11 @@ public interface NeighbourApiService {
      * @param neighbour
      */
     void createNeighbour(Neighbour neighbour);
+
+    /**
+     * Toggle favorite parameter
+     * @param neighbour
+     */
+    void toggleFavorite(Neighbour neighbour);
+
 }
