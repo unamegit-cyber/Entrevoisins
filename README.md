@@ -41,17 +41,3 @@ Instrumented Test : Select "NeighbourServiceTest" configuration and click on "ru
 
 ![alt text](https://github.com/unamegit-cyber/Entrevoisins/blob/master/blob/makeproject.png)
 
-
-
-
-
- 
- 
- Rajouter les docs des bilbiothèques utilisées (les lister)
- 
- Rajouter le resumé du cadrage en entete
- 
- 
- Faire un ppt pour présenter le p3 en soutenance
- 
- 
