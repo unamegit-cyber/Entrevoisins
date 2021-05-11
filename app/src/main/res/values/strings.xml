@@ -5,6 +5,4 @@
     <string name="activity_new_neighbour">New neighbour</string>
     <string name="Fragment_Neighbour_List">My Neighbour</string>
     <string name="Fragment_Neighbour_Favorites_List">Favorites</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
